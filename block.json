@@ -1,0 +1,10 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "piotrpress/dynamic-block",
+  "version": "0.1.0",
+  "title": "Dynamic Block",
+  "category": "text",
+  "icon": "block-default",
+  "editorScript": "file:./build/index.js"
+}
