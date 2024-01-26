@@ -10,7 +10,7 @@ Add `piotrpress/dynamic_block/callbacks` filter.
 
 ```php
 add_filter( 'piotrpress/dynamic_block/callbacks', function( $callbacks ) {
-    $callbacks[ 'Current date' ] = function() { return date('Y-m-d H:i:s'); };
+    $callbacks[ 'Current date' ] = fn() => date( 'Y-m-d H:i:s' );
     return $callbacks;
 } );
 ```

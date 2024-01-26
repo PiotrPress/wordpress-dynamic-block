@@ -2,7 +2,7 @@
 Contributors: PiotrPress
 Tags: dynamic-block, dynamic-blocks, gutenberg, block, blocks, php-block, php-blocks, fse, full-site-editing
 Requires at least: 6.2.2
-Tested up to: 6.2.2
+Tested up to: 6.4.2
 Stable tag: trunk
 Requires PHP: 7.4
 License: GPL v3 or later
@@ -21,7 +21,7 @@ Add `piotrpress/dynamic_block/callbacks` filter.
 = Example =
 
 `add_filter( 'piotrpress/dynamic_block/callbacks', function( $callbacks ) {
-    $callbacks[ 'Current date' ] = function() { return date('Y-m-d H:i:s'); };
+    $callbacks[ 'Current date' ] = fn() => date( 'Y-m-d H:i:s' );
     return $callbacks;
 } );`
 

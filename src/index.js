@@ -1,19 +1,27 @@
 import { registerBlockType } from '@wordpress/blocks';
-import { useBlockProps } from '@wordpress/block-editor';
-import { SelectControl } from '@wordpress/components';
+import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
+import { PanelBody, SelectControl } from '@wordpress/components';
+import { __ } from '@wordpress/i18n';
+import ServerSideRender from '@wordpress/server-side-render';
 
 registerBlockType( 'piotrpress/dynamic-block', {
-    edit: function ( { attributes, setAttributes } ) {
-        const blockProps = useBlockProps();
-
+    edit: ( { attributes, setAttributes } ) => {
         return (
-            <div { ...blockProps }>
-                <SelectControl
-                    label="Dynamic Block"
-                    value={ attributes.callback }
-                    options={ attributes.callbacks }
-                    onChange={ ( value ) => setAttributes( { callback: value } ) }
-                    __nextHasNoMarginBottom
+            <div { ...useBlockProps() }>
+                <InspectorControls>
+                    <PanelBody>
+                        <SelectControl
+                            label={ __( 'Render', 'piotrpress-dynamic-block' ) }
+                            value={ attributes.callback }
+                            options={ attributes.callbacks }
+                            onChange={ ( value ) => setAttributes( { callback: value } ) }
+                            __nextHasNoMarginBottom
+                        />
+                    </PanelBody>
+                </InspectorControls>
+                <ServerSideRender
+                    block='piotrpress/dynamic-block'
+                    attributes={ attributes }
                 />
             </div>
         );
